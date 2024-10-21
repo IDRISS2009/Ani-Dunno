@@ -1,0 +1,744 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: #fff;
+  height: 50vh;
+}
+
+.header {
+  width: 1140px;
+  max-width: 80%;
+  margin: auto;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 100;
+}
+
+.background {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+/* Navbar styles */
+.navbar {
+  width: 100%;
+  padding: 15px 0;
+  position: fixed;
+  border-radius: 100px;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center; /* Centrer la navbar pour PC */
+  align-items: center;
+  background: linear-gradient(135deg, #1b0033, #4b0071, #610022, #8e0000, #2a002b);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  border-bottom: 5px #fff double;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+/* Navbar links */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+}
+
+.navbar-links li {
+  position: relative;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 10px 20px;
+  transition: color 0.4s ease;
+  position: relative;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-links a:hover {
+  background-color: blue;
+  color: #fff;
+}
+
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background-color: #ff5722;
+  transition: width 0.4s ease, left 0.4s ease;
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Logo styles */
+.logo img {
+  width: 100px; /* Ajuste la taille selon tes besoins */
+}
+
+/* Hamburger menu */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-icon .hamburger {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  position: relative;
+  display: inline-block;
+}
+
+.menu-icon .hamburger::before,
+.menu-icon .hamburger::after {
+  content: "";
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+}
+
+.menu-icon .hamburger::before {
+  top: -10px;
+}
+
+.menu-icon .hamburger::after {
+  bottom: -10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+      justify-content: space-between; /* Image à gauche et hamburger à droite */
+      border-radius: 0%;
+      padding: 10px;
+  }
+
+  .navbar-links {
+      position: absolute;
+      top: 80px;
+      left: -100%;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      transition: left 0.3s ease;
+      align-items: center;
+  }
+
+  .navbar-links.nav-active {
+      left: 0;
+  }
+
+  .menu-icon {
+      display: block;
+  }
+
+  .logo {
+      order: -1; /* Placer l'image à gauche */
+  }
+}
+
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: transparent;
+  color: white;
+}
+
+.logo img {
+  width: 150px;
+}
+
+/* Menu de navigation */
+nav .menu {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+/* Styles pour le menu hamburger */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: #ccc;
+  margin: 3px 0;
+}
+
+/* Styles pour le menu lorsque l'écran est petit */
+@media (max-width: 768px) {
+  .cta .btn {
+    display: none;
+  }
+  nav .menu {
+    display: none; /* Masque le menu par défaut */
+    flex-direction: column;
+    position: absolute;
+    background-color: black;
+    top: 60px; /* Ajuste en fonction de la hauteur de l'en-tête */
+    right: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1;
+  }
+  nav .menu.active {
+    display: flex; /* Affiche le menu lorsque l'état actif est appliqué */
+  }
+  .menu-toggle {
+    display: flex; /* Affiche le bouton hamburger */
+  }
+  .home {
+    text-align: center;
+  }
+  .home-left img {
+    display: none;
+  }
+  .desc {
+    display: none;
+  }
+}
+/* Styles pour les liens du menu */
+nav .menu li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px;
+  transition: color 0.3s ease;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+  padding: 10px 20px;
+  transition: color 0.4s ease;
+  position: relative;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+nav .menu li a:hover {
+  color: blue;
+  background-color: black;
+  color: #fff;
+}
+
+.cta .btn {
+  background-color: aqua;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta .btn:hover {
+  background-color: red;
+  transform: scale(1.1);
+}
+
+.home {
+  background-image: url(jjk_home_bg.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 110vh;
+  border-radius: 10%;
+  margin: 0px 60px;
+  display: flex;
+  justify-content: flex-start; /* Placer la div à gauche */
+}
+
+.home-div {
+  background-color: rgba(255, 255, 255, 0.1); /* Couleur transparente pour l'effet verre */
+  backdrop-filter: blur(10px); /* Effet flou pour l'arrière-plan */
+  -webkit-backdrop-filter: blur(10px); /* Compatibilité Safari */
+  border-radius: 15px;
+  padding: 30px;
+  width: 43%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre pour un effet 3D */
+}
+
+.home h1 {
+  font-size: 4em;
+  animation: glitch 1.7s infinite;
+  color: white; /* Assure que le texte est visible */
+}
+
+@keyframes glitch {
+  0%, 100% {
+    text-shadow: 5px 5px 0 red, -5px -5px 0 cyan;
+  }
+  50% {
+    text-shadow: 5px 5px 0 #ecad29, -5px -5px 0 red;
+  }
+}
+.home-div h5 {
+  padding: 20px;
+  text-align: center;
+  font-size: large;
+}
+
+.home-div p {
+  color: #fff;
+  font-family: sans-serif;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 10%;
+}
+
+/* Style de base des boutons */
+.home-div .btn {
+  padding: 15px 40px;
+  font-size: 1.2em;
+  color: #fff;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-radius: 20px;
+}
+
+/* Animation pour le bouton SEE MORE */
+.home-div .see-more-btn {
+  background-color: transparent;
+  border: 2px solid #fff;
+}
+
+.home-div .see-more-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffcc00; /* Or clair pour le hover */
+  border-color: #ffcc00;
+  transform: scale(1.05); /* Agrandissement léger pour l'effet pro */
+}
+
+/* Animation pour le bouton WATCH */
+.home-div .watch-btn {
+  background-color: #ffcc00; /* Or clair pour attirer l'attention */
+  color: #000;
+}
+
+.home-div .watch-btn:hover {
+  background-color: #fff;
+  color: #ffcc00;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+}
+
+/* Effet de ligne de lumière qui traverse le bouton au hover */
+.home-div .btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 200%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transition: all 0.5s ease-in-out;
+}
+
+.home-div .btn:hover::before {
+  left: 100%;
+}
+
+.home-div .see-more-btn a {
+  text-decoration: none;
+  color: #ecad29;
+}
+
+.home-div .watch-btn a {
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .home {
+    height: auto; /* Ajuster la hauteur automatiquement */
+    background-image: url(jjk_home_bg.jpeg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .home-div {
+    width: 100%; /* Utiliser toute la largeur sur mobile */
+    padding: 20px;
+    background-color: transparent; /* Couleur transparente pour l'effet verre */
+  backdrop-filter: blur(0px); /* Effet flou pour l'arrière-plan */
+  -webkit-backdrop-filter: blur(0px); /* Compatibilité Safari */
+  }
+
+
+  .home h1 {
+    font-size: 2.5em; /* Taille réduite pour le titre */
+  }
+
+  .home-div h5 {
+    font-size: 1em;
+  }
+
+  .home-div p {
+    font-size: 0.9em;
+  }
+
+  .home-div .btn {
+    font-size: 1em; /* Réduire la taille des boutons */
+    padding: 10px 25px;
+  }
+}
+
+.characters-section {
+  padding: 20px;
+  margin-top: 30vh;
+  text-align: center;
+}
+
+
+.characters{
+  color: #ecad29;
+  text-align: center;
+  margin-top: 20vh;
+  font-size: 3em;
+}
+
+
+span {
+  color: #e63946;
+  font-weight: 600;
+}
+
+.powers-section {
+  padding: 50px 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.powers-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #4db6ff;
+}
+
+.powers-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.power-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  transition: transform 0.2s;
+}
+
+.power-card h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #e63946;
+}
+
+.power-card p {
+  font-size: 1em;
+  color: #555;
+}
+
+.power-card:hover {
+  transform: scale(1.05);
+}
+
+#episodes {
+  background-color: #222;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #ecad29;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.8em;
+  margin-top: 30px;
+  color: red;
+}
+
+h4 {
+  font-size: 1.4em;
+  margin-top: 20px;
+  color: aqua;
+}
+
+p, ul {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.season, .film, .info {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+strong {
+  color: #ecad29;
+}
+
+.new-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #121212 0%, #1b1b1b 100%);
+  color: #ffffff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 3rem;
+  color: #4db6ff; /* Couleur bleue électrique */
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Conteneur de news */
+.news-items {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* Style pour chaque news */
+.news-item {
+  background: #1b1b1b;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Image de chaque news */
+.news-image {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.news-item:hover .news-image {
+  transform: scale(1.1);
+}
+
+/* Contenu de la news */
+.news-content {
+  padding: 20px;
+}
+
+.news-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ff414d; /* Rouge intense */
+}
+
+.news-description {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #d9d9d9;
+}
+
+/* Bouton Read More */
+.btn.read-more {
+  padding: 10px 20px;
+  background-color: #0f1e36;
+  border-radius: 30px;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+}
+
+.btn.read-more:hover {
+  background-color: #4db6ff;
+  box-shadow: 0 5px 15px rgba(77, 182, 255, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.slider {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 640px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-top: 30vh;
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 300px;
+  height: 640px;
+  z-index: 1;
+}
+
+.slides {
+  display: flex;
+  position: relative;
+  top: 0;
+  left: -300px;
+  width: 10000px;
+}
+
+.slides.shifting {
+  transition: left 0.2s ease-out;
+}
+
+.slide {
+  width: 300px;
+  height: 640px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Espace entre l'image et la description */
+  align-items: center; /* Centre le contenu horizontalement */
+  transition: all 1s;
+  position: relative;
+  background: #FFCF47;
+  border-radius: 2px;
+}
+
+.slide img {
+  width: 100%;
+  margin-top: 20px; /* Un peu d'espace en haut */
+}
+
+.description {
+  margin-top: auto; /* Pour pousser la description en bas */
+  margin-bottom: 40px; /* Un peu d'espace en bas */
+  font-size: 16px; /* Ajustez la taille de la police si nécessaire */
+  color: #333; /* Ajustez la couleur de la description */
+  padding: 10px;
+}
+
+.control {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50px;
+  margin-top: -20px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.prev,
+.next {
+  background-size: 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.prev {
+  background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronLeft-512.png);
+  left: -20px;
+}
+
+.next {
+  background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronRight-512.png);
+  right: -20px;
+}
+
+.prev:active,
+.next:active {
+  transform: scale(0.8);
+}/*# sourceMappingURL=jujutsu.css.map */
